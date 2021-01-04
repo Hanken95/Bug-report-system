@@ -1,0 +1,34 @@
+Vi ska ta fram ett enkelt bugrapporteringsverktyg som ska uppfylla följande krav:
+
+Systemet ska utvecklas testdrivet från grunden. Testerna ska täcka en rimlig mängd av
+programmet för att underlätta för er.
+
+Systemet ska ha ett användargränssnitt (CLI, Desktop, webb eller app). UX eller design av
+användargränssnittet kommer inte att bedömas. Det är helt okey att använda en vit sida med
+knappar som aktiverar funktioner.
+
+Systemet ska ha någon form av persistens, databas, textfiler eller lagring i extern tjänst.
+Systemet ska vara utvecklat med en mikroservicearkitektur. Systemet ska innehålla minst tre
+stycken tjänster. Samtliga tjänster ska motiverat användas från användargränssnittet (de är
+okey att de kallas på genom andra tjänster)
+
+
+Som användare vill jag:
+1. kunna lägga till buggarrapporter
+2. läsa buggrapporter
+3. sätta status på buggrapporter
+
+Tekniska specifikationer:
+* C#
+* Razor Pages
+* SQLite
+
+Beskrivning av systemets funktioner:
+* Ett formulär/textlåda där man skriver en ny buggrapport
+* Submit-knapp
+* Lista över befintliga rapporter
+* Varje rapport ska ha:
+    1: En rubrik bestående av ett ID och kort beskrivning
+    2: En mer utförlig beskrivning som syns när man öppnar den
+    3. Aktuell status, typ checkbox
+    4. Lösningsbeskrivning
