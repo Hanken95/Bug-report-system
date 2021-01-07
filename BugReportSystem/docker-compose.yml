@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  bugreportsystemfrontend:
+    image: ${DOCKER_REGISTRY-}bugreportsystemfrontend
+    build:
+      context: .
+      dockerfile: BugReportSystemFrontEnd/Dockerfile
+
+  createservice:
+    image: ${DOCKER_REGISTRY-}createservice
+    build:
+      context: .
+      dockerfile: CreateService/Dockerfile
+
