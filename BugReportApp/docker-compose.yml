@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  backend:
+    image: ${DOCKER_REGISTRY-}backend
+    build:
+      context: .
+      dockerfile: BackEnd/Dockerfile
+    depends_on:
+    - db
+
+  frontend:
+    image: ${DOCKER_REGISTRY-}frontend
+    build:
+      context: .
+      dockerfile: FrontEnd/Dockerfile
+    depends_on:
+    - backend
+
+  db:
+    image: "mcr.microsoft.com/mssql/server"
+    environment: 
+        SA_PASSWORD: "Your_password123"
+        ACCEPT_EULA: "Y"
+    ports:
+     - 1433:1433
