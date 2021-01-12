@@ -1,0 +1,42 @@
+﻿@page
+@model FrontEnd.Pages.BugReports.IndexModel
+@{
+}
+<h3>BugReports</h3>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<table class="table text-center table-responsive-md">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BugReports[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BugReports[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BugReports[0].Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="trMiddle">
+        @foreach (var bugReport in Model.BugReports)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => bugReport.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => bugReport.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => bugReport.Status)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
