@@ -5,10 +5,8 @@
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>ec3d01fe-0bb9-4107-af3e-813dba3ab503</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceName>frontend</DockerServiceName>
-  </PropertyGroup>
-  <PropertyGroup>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/</DockerServiceUrl>
+    <DockerServiceName>frontend</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
