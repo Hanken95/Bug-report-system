@@ -16,6 +16,8 @@ services:
       dockerfile: FrontEnd/Dockerfile
     depends_on:
     - backend
+    ports:
+    - "80:80"
 
   db:
     image: "mcr.microsoft.com/mssql/server"

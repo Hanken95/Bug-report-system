@@ -10,9 +10,10 @@ namespace FrontEnd.Pages.BugReports
 {
     public class IndexModel : PageModel
     {
+        [BindProperty]
         public List<BugReport> BugReports { get; set; }
 
-        public void OnGet()
+        public async Task OnGet()
         {
             BugReports = new List<BugReport>()
             {
@@ -21,6 +22,15 @@ namespace FrontEnd.Pages.BugReports
                 new BugReport(){ ID = 3, Title = "Bug 3", Description = "Test for bug 3", Status = Status.Closed },
                 new BugReport(){ ID = 4, Title = "Bug 4", Description = "Test for bug 4", Status = Status.Open }
             };
+
+            using (var client = new System.Net.Http.HttpClient())
+            {
+                var request = new System.Net.Http.HttpRequestMessage();
+                request.RequestUri = new Uri("http://backend/BugReports");
+                var response = await client.SendAsync(request);
+                var responseString = await response.Content.ReadAsStringAsync();
+                ViewData["Message"] += " and " + responseString;
+            }
         }
     }
 }
