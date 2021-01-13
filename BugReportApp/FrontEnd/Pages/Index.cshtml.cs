@@ -1,25 +1,32 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
+using BackEnd.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Newtonsoft;
+using Newtonsoft.Json.Linq;
 
-namespace FrontEnd.Pages
+namespace FrontEnd.Pages.BugReports
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        [BindProperty]
+        public IList<BugReport> BugReports { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public async Task OnGet()
         {
-            _logger = logger;
-        }
-
-        public void OnGet()
-        {
-
+            using (var client = new System.Net.Http.HttpClient())
+            {
+                var request = new System.Net.Http.HttpRequestMessage();
+                request.RequestUri = new Uri("http://backend/api/BugReports");
+                var response = await client.SendAsync(request);
+                var responseString = await response.Content.ReadAsStringAsync();
+                JArray a = JArray.Parse(responseString);
+                BugReports = a.ToObject<IList<BugReport>>();
+            }
         }
     }
 }
