@@ -26,7 +26,7 @@ namespace FrontEnd.Pages.BugReports
             using (var client = new System.Net.Http.HttpClient())
             {
                 var request = new System.Net.Http.HttpRequestMessage();
-                request.RequestUri = new Uri("http://backend/BugReports");
+                request.RequestUri = new Uri("http://backend/api/BugReports");
                 var response = await client.SendAsync(request);
                 var responseString = await response.Content.ReadAsStringAsync();
                 ViewData["Message"] += " and " + responseString;
