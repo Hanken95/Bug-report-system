@@ -26,10 +26,10 @@ namespace BackEnd.Controllers
         {
             var bugReports = new List<BugReport>()
             {
-                new BugReport(){ ID = 1, Title = "Bug 1", Description = "Test for bug 1", Status = Status.Open },
-                new BugReport(){ ID = 2, Title = "Bug 2", Description = "Test for bug 2", Status = Status.Closed },
-                new BugReport(){ ID = 3, Title = "Bug 3", Description = "Test for bug 3", Status = Status.Closed },
-                new BugReport(){ ID = 4, Title = "Bug 4", Description = "Test for bug 4", Status = Status.Open }
+                new BugReport(){ Id = 1, Title = "Bug 1", Description = "Test for bug 1", Status = Status.Open },
+                new BugReport(){ Id = 2, Title = "Bug 2", Description = "Test for bug 2", Status = Status.Closed },
+                new BugReport(){ Id = 3, Title = "Bug 3", Description = "Test for bug 3", Status = Status.Closed },
+                new BugReport(){ Id = 4, Title = "Bug 4", Description = "Test for bug 4", Status = Status.Open }
             };
 
             return  bugReports;
@@ -54,7 +54,7 @@ namespace BackEnd.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBugReport(int id, BugReport bugReport)
         {
-            if (id != bugReport.ID)
+            if (id != bugReport.Id)
             {
                 return BadRequest();
             }
@@ -88,7 +88,7 @@ namespace BackEnd.Controllers
             _context.BugReport.Add(bugReport);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBugReport", new { id = bugReport.ID }, bugReport);
+            return CreatedAtAction("GetBugReport", new { id = bugReport.Id }, bugReport);
         }
 
         // DELETE: api/BugReports/5
@@ -109,7 +109,7 @@ namespace BackEnd.Controllers
 
         private bool BugReportExists(int id)
         {
-            return _context.BugReport.Any(e => e.ID == id);
+            return _context.BugReport.Any(e => e.Id == id);
         }
     }
 }
