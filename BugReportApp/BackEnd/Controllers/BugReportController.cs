@@ -24,13 +24,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BugReport>>> GetBugReport()
         {
-            var bugReports = new List<BugReport>()
-            {
-                new BugReport(){ Id = 1, Title = "Bug 1", Description = "Test for bug 1", Status = Status.Open },
-                new BugReport(){ Id = 2, Title = "Bug 2", Description = "Test for bug 2", Status = Status.Closed },
-                new BugReport(){ Id = 3, Title = "Bug 3", Description = "Test for bug 3", Status = Status.Closed },
-                new BugReport(){ Id = 4, Title = "Bug 4", Description = "Test for bug 4", Status = Status.Open }
-            };
+            var bugReports = await _context.BugReport.ToListAsync(); ;
 
             return bugReports;
         }
