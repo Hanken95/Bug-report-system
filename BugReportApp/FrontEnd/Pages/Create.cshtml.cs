@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
-using BackEnd.Models;
+using FrontEnd.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace FrontEnd.Pages.BugReports
 {
@@ -19,14 +23,12 @@ namespace FrontEnd.Pages.BugReports
 
         public async Task<IActionResult> OnPostAsync()
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return Page();
-            //}
-
-            //_context.Movie.Add(Movie);
-            //await _context.SaveChangesAsync();
-
+            using (var client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.PostAsJsonAsync(
+                "http://backend/api/BugReports", BugReport);
+                response.EnsureSuccessStatusCode();
+            }
             return RedirectToPage("./Index");
         }
     }
