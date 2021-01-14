@@ -16,7 +16,7 @@ namespace FrontEnd.Pages.BugReports
         [BindProperty]
         public IList<BugReport> BugReports { get; set; }
 
-        public async Task OnGet()
+        public async Task OnGetAsync()
         {
             using (var client = new System.Net.Http.HttpClient())
             {

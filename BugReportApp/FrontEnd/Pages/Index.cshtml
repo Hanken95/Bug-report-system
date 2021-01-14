@@ -28,17 +28,20 @@
     <tbody class="trMiddle">
         @foreach (var bugReport in Model.BugReports)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => bugReport.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => bugReport.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => bugReport.Status)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => bugReport.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => bugReport.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => bugReport.Status)
+            </td>
+            <td>
+                <a asp-page="./Delete" asp-route-id="@bugReport.Id">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
