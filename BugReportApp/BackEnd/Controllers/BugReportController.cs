@@ -11,11 +11,11 @@ namespace BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BugReportsController : ControllerBase
+    public class BugReportController : ControllerBase
     {
         private readonly BugReportContext _context;
 
-        public BugReportsController(BugReportContext context)
+        public BugReportController(BugReportContext context)
         {
             _context = context;
         }
@@ -32,7 +32,7 @@ namespace BackEnd.Controllers
                 new BugReport(){ Id = 4, Title = "Bug 4", Description = "Test for bug 4", Status = Status.Open }
             };
 
-            return  bugReports;
+            return bugReports;
         }
 
         // GET: api/BugReports/5

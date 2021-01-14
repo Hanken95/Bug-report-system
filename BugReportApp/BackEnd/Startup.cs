@@ -34,6 +34,8 @@ namespace BackEnd
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BackEnd", Version = "v1" });
             });
 
+            //services.AddDbContext<BugReportContext>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("BugReportContext")));
             services.AddDbContext<BugReportContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BugReportContext"),
                     b => b.MigrationsAssembly(typeof(BugReportContext).Assembly.FullName)));
@@ -42,7 +44,19 @@ namespace BackEnd
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            //using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+            //    .CreateScope())
+            //{
+            //    serviceScope.ServiceProvider
+            //        .GetService<BugReportContext>()
+            //        .Database
+            //        .Migrate();
+
+            //    serviceScope.ServiceProvider
+            //        .GetService<BugReportContext>().SaveChangesAsync();
+            //}
+            
+                if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
@@ -57,6 +71,7 @@ namespace BackEnd
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
