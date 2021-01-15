@@ -23,9 +23,12 @@ namespace FrontEnd.Pages.BugReports
                 var request = new System.Net.Http.HttpRequestMessage();
                 request.RequestUri = new Uri("http://backend/api/BugReports");
                 var response = await client.SendAsync(request);
-                var responseString = await response.Content.ReadAsStringAsync();
-                JArray a = JArray.Parse(responseString);
-                BugReports = a.ToObject<IList<BugReport>>();
+                if (response != null)
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    JArray a = JArray.Parse(responseString);
+                    BugReports = a.ToObject<IList<BugReport>>();
+                }
             }
         }
     }
