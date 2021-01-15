@@ -10,7 +10,8 @@ using BackEnd.Models;
         public BugReportContext (DbContextOptions<BugReportContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
-        public DbSet<BackEnd.Models.BugReport> BugReport { get; set; }
+        public DbSet<BugReport> BugReport { get; set; }
     }

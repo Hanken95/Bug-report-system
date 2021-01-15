@@ -19,6 +19,4 @@ namespace FrontEnd.Models
             Status = Status.Open;
         }
     }
-
-  
 }

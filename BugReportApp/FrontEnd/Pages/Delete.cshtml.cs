@@ -36,13 +36,13 @@ namespace FrontEnd.Pages
                 return NotFound();
             }
 
-            await SetCurrentBugReport(id);
+            //await SetCurrentBugReport(id);
 
             if (BugReport != null)
             {
                 using (var client = new System.Net.Http.HttpClient())
                 {
-                    var requestUri = new Uri("http://backend/api/BugReports/" + id);
+                    var requestUri = new Uri("http://backend/api/BugReport/" + id);
                     var response = await client.DeleteAsync(requestUri);
                 }
             }
@@ -55,7 +55,7 @@ namespace FrontEnd.Pages
             using (var client = new System.Net.Http.HttpClient())
             {
                 var request = new System.Net.Http.HttpRequestMessage();
-                request.RequestUri = new Uri("http://backend/api/BugReports/" + id);
+                request.RequestUri = new Uri("http://backend/api/BugReport/" + id);
                 var response = await client.SendAsync(request);
                 var responseString = await response.Content.ReadAsStringAsync();
                 BugReport = JsonConvert.DeserializeObject<BugReport>(responseString);

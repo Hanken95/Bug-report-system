@@ -26,7 +26,7 @@ namespace FrontEnd.Pages.BugReports
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response = await client.PostAsJsonAsync(
-                "http://backend/api/BugReports", BugReport);
+                "http://backend/api/BugReport", BugReport);
                 response.EnsureSuccessStatusCode();
             }
             return RedirectToPage("./Index");
