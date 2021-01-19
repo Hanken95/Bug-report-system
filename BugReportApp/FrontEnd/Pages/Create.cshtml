@@ -1,0 +1,32 @@
+﻿@page
+@model FrontEnd.Pages.BugReports.CreateModel
+@{
+}
+<h1>Create</h1>
+
+<h4>BugReport</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BugReport.Title" class="control-label"></label>
+                <input id="title-input" asp-for="BugReport.Title" class="form-control" />
+                <span asp-validation-for="BugReport.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BugReport.Description" class="control-label"></label>
+                <input id="description-input" asp-for="BugReport.Description" class="form-control" />
+                <span asp-validation-for="BugReport.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input id="submit-button" type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a id="back-to-list-link" asp-page="Index">Back to List</a>
+</div>
