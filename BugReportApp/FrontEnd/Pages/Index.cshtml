@@ -5,7 +5,7 @@
 <h3>BugReports</h3>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a id="create-link" asp-page="Create">Create New</a>
 </p>
 
 <p>@ViewData["Message"]</p>
@@ -39,7 +39,7 @@
                 @Html.DisplayFor(modelItem => bugReport.Status)
             </td>
             <td>
-                <a asp-page="./Delete" asp-route-id="@bugReport.Id">Delete</a>
+                <a id="delete-link-nr-@bugReport.Id" asp-page="./Delete" asp-route-id="@bugReport.Id">Delete</a>
             </td>
         </tr>
         }
