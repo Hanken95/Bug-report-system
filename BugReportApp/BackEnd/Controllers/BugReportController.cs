@@ -20,7 +20,7 @@ namespace BackEnd.Controllers
             _context = context;
         }
 
-        // GET: api/BugReports
+        // GET: api/BugReport
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BugReport>>> GetBugReport()
         {
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
             return bugReports;
         }
 
-        // GET: api/BugReports/5
+        // GET: api/BugReport/5
         [HttpGet("{id}")]
         public async Task<ActionResult<BugReport>> GetBugReport(int id)
         {
@@ -43,7 +43,7 @@ namespace BackEnd.Controllers
             return bugReport;
         }
 
-        // PUT: api/BugReports/5
+        // PUT: api/BugReport/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBugReport(int id, BugReport bugReport)
@@ -74,7 +74,7 @@ namespace BackEnd.Controllers
             return NoContent();
         }
 
-        // POST: api/BugReports
+        // POST: api/BugReport
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<BugReport>> PostBugReport(BugReport bugReport)
@@ -85,7 +85,7 @@ namespace BackEnd.Controllers
             return CreatedAtAction("GetBugReport", new { id = bugReport.Id }, bugReport);
         }
 
-        // DELETE: api/BugReports/5
+        // DELETE: api/BugReport/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBugReport(int id)
         {
