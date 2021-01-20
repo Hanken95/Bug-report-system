@@ -11,7 +11,16 @@
         cy.get('#submit-button').click()
     }) 
 
-    it('deletes a bug report', () => {
+    it('clicks on delete but cancels', () => {
+        cy.contains('test title').parent('tr').within(() => {
+            cy.get('td').eq(1).contains('test description containing more detailed information')
+            cy.get('td').eq(2).contains('Open')
+            cy.get('td').eq(3).contains('Delete').click()
+        })
+        cy.get('#cancel-link').click();
+    })
+
+    it('confirms and deletes a bug report', () => {
         cy.contains('test title').parent('tr').within(() => {
             cy.get('td').eq(1).contains('test description containing more detailed information')
             cy.get('td').eq(2).contains('Open')
