@@ -1,5 +1,5 @@
 # Bug-report-system
 
-Johan
+Johan C
 Luna
 Emil P
